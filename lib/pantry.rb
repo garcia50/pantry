@@ -32,4 +32,10 @@ class Pantry
     end
   end
 
+  def print_shopping_list
+    shopping_list.each do |key, value|
+      print "* #{key}: #{value}\n"
+    end 
+  end
+
 end
