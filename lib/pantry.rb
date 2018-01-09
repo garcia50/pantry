@@ -41,4 +41,30 @@ class Pantry
     end 
   end
 
+  def add_to_cookbook(r)
+    r.ingredients.each_pair do |key, value|
+      if @add_to_cookbook.has_key?(key)
+        @add_to_cookbook[key]["Cheese Pizza"] += value["Cheese Pizza"] 
+      else
+        @add_to_cookbook[key] = value
+      end
+    end
+  end
+
+  def what_can_i_make
+    ingr = @add_to_cookbook.each_pair do |key, value|
+      require 'pry'; binding.pry
+    end
+    sorted = ingr.sort_by { |amount| amount.min }
+    sorted.first.ingredients.keys[value] - sorted.last.ingredients.keys[value]
+  end
+
 end
+
+
+
+
+
+
+
+
