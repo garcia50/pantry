@@ -25,7 +25,7 @@ class Pantry
   def add_to_shopping_list(r)
     r.ingredients.each_pair do |key, value|
       if shopping_list.has_key?(key)
-        shopping_list[key]["Cheese Pizza"] += value["Cheese Pizza"] 
+        shopping_list[key] += value
       else
         shopping_list[key] = value
       end
