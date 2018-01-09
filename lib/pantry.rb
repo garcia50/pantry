@@ -1,12 +1,14 @@
 class Pantry
   attr_reader :stock, 
               :shopping_list, 
-              :add_to_cookbook
+              :add_to_cookbook,
+              :cookbook
 
   def initialize
     @stock = {}
     @shopping_list = {}
     @add_to_cookbook = {}
+    @cookbook = []
   end
 
   def stock_check(food)
@@ -42,21 +44,24 @@ class Pantry
   end
 
   def add_to_cookbook(r)
-    r.ingredients.each_pair do |key, value|
-      if @add_to_cookbook.has_key?(key)
-        @add_to_cookbook[key]["Cheese Pizza"] += value["Cheese Pizza"] 
-      else
-        @add_to_cookbook[key] = value
-      end
+    @cookbook << r
+  end
+  
+  def what_can_i_make
+    total = []
+    cookbook.each do |recipe|
+
+      recipe.ingredients.each_pair do |key, value|
+        if (stock[key] - value) >= 0 
+          total << recipe.name
+        end
+      end  
     end
+    total.uniq
   end
 
-  def what_can_i_make
-    ingr = @add_to_cookbook.each_pair do |key, value|
-      require 'pry'; binding.pry
-    end
-    sorted = ingr.sort_by { |amount| amount.min }
-    sorted.first.ingredients.keys[value] - sorted.last.ingredients.keys[value]
+  def how_many_can_i_make
+    
   end
 
 end

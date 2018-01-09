@@ -59,18 +59,19 @@ class RecipeTest < Minitest::Test
     assert_equal expect, pantry.shopping_list
   end
 
-  # def test_print_shopping_list
-  #   recipe = Recipe.new("Spaghetti")
+  def test_print_shopping_list
+    skip
+    recipe = Recipe.new("Spaghetti")
 
-  #   recipe.add_ingredient("Cheese", 25)
-  #   recipe.add_ingredient("Flour", 20)
-  #   recipe.add_ingredient("Spaghetti Noodles", 10)
-  #   recipe.add_ingredient("Marinara Sauce", 10)
+    recipe.add_ingredient("Cheese", 25)
+    recipe.add_ingredient("Flour", 20)
+    recipe.add_ingredient("Spaghetti Noodles", 10)
+    recipe.add_ingredient("Marinara Sauce", 10)
 
-  #   pantry.add_to_shopping_list(recipe)
+    pantry.add_to_shopping_list(recipe)
 
-  #   assert_equal "* Cheese: 25\n* Flour: 20\n* Spaghetti Noodles: 10\n* Marinara Sauce: 10", pantry.print_shopping_list
-  # end
+    assert_equal "* Cheese: 25\n* Flour: 20\n* Spaghetti Noodles: 10\n* Marinara Sauce: 10", pantry.print_shopping_list
+  end
 
   def test_what_you_can_make_and_how_many
     r1 = Recipe.new("Cheese Pizza")
